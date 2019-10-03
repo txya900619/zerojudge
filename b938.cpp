@@ -1,50 +1,32 @@
 #include<iostream>
 using namespace std;
-bool man[1000001] = {false};
+bool man_killed[1000001]={false};
 int main(){
-    std::ios::sync_with_stdio(false),cin.tie(NULL);
-    int n, m,m_d,ans;
-    int kill_list[1000001];
-    bool secc;
-    cin >> n >> m;
-    m_d = m;
-    for (int i = 1; i <= m;i++){
-        cin >> kill_list[i];
-    }
-    while(m--){
-        secc = false;
-        if(man[kill_list[m_d-m]]||kill_list[m_d-m]<=0||kill_list[m_d-m]>n){
-            cout << "0u0 ...... ?\n";
+    ios_base::sync_with_stdio(false),cin.tie(NULL);
+    int mannum,killnum;
+    cin>>mannum>>killnum;
+    while(killnum--){
+        int num2killbehide;
+        cin>>num2killbehide;
+        if(man_killed[num2killbehide]||num2killbehide>=mannum||num2killbehide<=0){
+            cout<<"0u0 ...... ?\n";
             continue;
         }
-        if(man[kill_list[m_d-m]+1]){
-            for (int i = kill_list[m_d - m ] + 2; i <= n;i++){
-                if(!man[i]){
-                    ans = i;
-                    man[i] = true;
-                    secc = true;
-                    break;
-                }else if(i==n){
-                    secc = false;
-                }
+        for(int i = num2killbehide+1;i<=mannum;i++){
+            if(i==mannum&&man_killed[mannum]){
+                cout<<"0u0 ...... ?\n";
+                break;
             }
+            if(man_killed[i]){
+                continue;
+            }else{
+                man_killed[i] = true;
+                cout<<i<<endl;
+                break;
+            }
+            
+        }
 
-        }else{
-            ans = kill_list[m_d - m ] + 1;
-            man[kill_list[m_d - m ] + 1] = true;
-            secc = true;
-        }
-        if (ans>n){
-            cout << "0u0 ...... ?\n";
-            continue;
-        }
-        if(secc){
-            cout << ans <<"\n";
-        }
-        else{
-            cout << "0u0 ...... ?\n";
-        }
     }
-
     return 0;
 }
