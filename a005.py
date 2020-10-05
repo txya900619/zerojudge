@@ -8,9 +8,7 @@ while True:
 
         for key,value in numlist.items():
             if value[2]/value[1]==value[3]/value[2]:
-                value.append(value[3]//value[2]*value[3])
-            if value[2]-value[1]==value[3]-value[2] and value[2]-value[1]!=0:
-                value.append(value[3]-value[2]+value[3])
+                val
     
         for key,value in numlist.items():
             for index2 in value:
