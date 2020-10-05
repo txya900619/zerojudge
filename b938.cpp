@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-int behide[1000001];
+int behide[1000002];
 bool died[1000001] ;
 int main(){
     cin.sync_with_stdio(false),cin.tie(NULL);
